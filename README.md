@@ -9,9 +9,15 @@
 [![JavaScript](https://img.shields.io/badge/Language-JavaScript-F7DF1E?logo=javascript&logoColor=black)](quest-completer.js)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
-Paste in DevTools. Sit back.
+Claim free Discord rewards without installing or playing anything.
 
 </div>
+
+---
+
+## 🎁 Why?
+
+Discord regularly drops **limited-time quests** that reward free cosmetics — avatar decorations, profile effects, collectibles, and more. The catch? You need to play specific games for hours. This script handles that for you automatically, so you never miss a reward drop.
 
 ---
 
