@@ -1,38 +1,59 @@
-# discord-quest-completer
+<div align="center">
 
-Auto-complete Discord game-play quests without actually playing. Runs entirely in the Discord Desktop DevTools console.
+# 🎮 discord-quest-completer
 
-## Supported Quest Types
+**Auto-complete Discord game-play quests without playing.**
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Discord](https://img.shields.io/badge/Platform-Discord%20Desktop-5865F2?logo=discord&logoColor=white)](https://discord.com)
+[![JavaScript](https://img.shields.io/badge/Language-JavaScript-F7DF1E?logo=javascript&logoColor=black)](quest-completer.js)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+
+Paste in DevTools. Sit back.
+
+</div>
+
+---
+
+## ⚡ Quick Start
+
+```
+1. Open Discord Desktop
+2. Ctrl+Shift+I → Console tab
+3. Paste quest-completer.js → Enter
+```
+
+The script auto-detects all enrolled, uncompleted quests and processes them sequentially with real-time progress logging.
+
+## 📋 Supported Quest Types
 
 | Type | Method |
 |---|---|
-| `PLAY_ON_DESKTOP` | Spoofs a running game process via Discord's internal `RunningGameStore` |
-| `PLAY_ACTIVITY` | Sends periodic heartbeat requests to the quest progress API |
+| `PLAY_ON_DESKTOP` | Spoofs a running game process via `RunningGameStore` |
+| `PLAY_ACTIVITY` | Sends heartbeat requests to the quest progress API |
 
-## Usage
+## 🔍 How It Works
 
-1. Open **Discord Desktop** app
-2. Press `Ctrl+Shift+I` to open DevTools
-3. Go to the **Console** tab
-4. Paste the contents of [`quest-completer.js`](quest-completer.js) and press Enter
+The script hooks into Discord's internal webpack modules to access stores and APIs that aren't publicly exposed.
 
-The script will automatically detect all enrolled, uncompleted quests and process them sequentially. Progress is logged in real-time.
-
-## How It Works
-
-The script hooks into Discord's internal webpack modules to access stores and APIs that aren't exposed publicly. For desktop quests, it patches `RunningGameStore` to make Discord believe a game is running by injecting a fake process entry — Discord's heartbeat system then naturally ticks up the quest progress. For activity quests, it directly posts heartbeat requests to the quest API endpoint on a 20-second interval until the target is met.
+- **Desktop quests** → Patches `RunningGameStore` to inject a fake game process. Discord's heartbeat system naturally ticks up progress.
+- **Activity quests** → Posts heartbeat requests to the quest API on a 20s interval until the target is met.
 
 All quests are queued and processed one at a time. Once a quest hits its target duration, the spoofed state is cleaned up and the next quest begins.
 
-## Requirements
+## 📌 Requirements
 
-- Discord Desktop app (browser is not supported)
+- Discord **Desktop** app (browser is not supported)
 - At least one enrolled, uncompleted game-play quest
 
-## Disclaimer
+## 🤝 Contributing
 
-This project is for educational purposes only. Use at your own risk. This is not affiliated with or endorsed by Discord.
+Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
-## License
+## ⚠️ Disclaimer
+
+This project is for **educational purposes only**. Use at your own risk. Not affiliated with or endorsed by Discord.
+
+## 📄 License
 
 [MIT](LICENSE)
